@@ -57,11 +57,6 @@ async function loginUser(req,res){
   try{
     let userobj = await userModel.findOne({email : req.body.email});
    if(req.body.email){
-       
-        //  console.log(userobj.email);
-        //  console.log(userobj.password == req.body.password);
-        //  console.log(userobj.password);
-        // //  console.log( req.body.password);
          if(userobj.password == req.body.password){
           let payload = userobj["_id"];
           // let payload = "A";
@@ -76,8 +71,7 @@ async function loginUser(req,res){
          }else{
           res.status(404).send({
             msg : "something went wrong email or password"
-          })
-         }
+          })}
    }else{
      res.status(404).send({
       msg : "email or password is wrong"
